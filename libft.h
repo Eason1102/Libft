@@ -6,7 +6,7 @@
 /*   By: eseah <eseah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 05:08:07 by eseah             #+#    #+#             */
-/*   Updated: 2022/10/31 11:05:56 by eseah            ###   ########.fr       */
+/*   Updated: 2022/11/12 22:36:54 by eseah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,6 @@ char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strncat(char *s1, const char *s2, size_t n);
 char			*ft_strstr(const char *haystack, const char *needle);
 char			*ft_strndup(const char *s1, size_t n);
+void			ft_striteri(char *s, void (*f)(unsigned int, char *));
 
 #endif

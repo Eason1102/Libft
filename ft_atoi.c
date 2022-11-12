@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eseah <eseah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 11:47:02 by eseah             #+#    #+#             */
-/*   Updated: 2022/11/10 11:16:24 by eseah            ###   ########.fr       */
+/*   Created: 2022/11/10 22:47:59 by eseah             #+#    #+#             */
+/*   Updated: 2022/11/11 10:49:37 by eseah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
+	int			i;
+	int			sym;
+	long int	num;
 
-	if (dst == src || !len)
-		return (dst);
+	num = 0;
 	i = 0;
-	if (dst < src)
+	sym = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == ' ')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while (i < len)
-		{
-			*((char *)dst + i) = *((char *)src + i);
-			i++;
-		}
+		if (str[i] == '-')
+			sym++;
+		i++;
 	}
-	else
+	while (str[i] >= '0' && str[i] <= '9')
 	{
-		while (len > 0)
-		{
-			*((char *)dst + len - 1) = *((char *)src + len - 1);
-			len--;
-		}
+		num = num * 10 + (str[i] - '0');
+		i++;
 	}
-	return (dst);
+	if (sym)
+		return (num * -1);
+	return (num);
 }

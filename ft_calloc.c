@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eseah <eseah@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/31 11:47:02 by eseah             #+#    #+#             */
-/*   Updated: 2022/11/10 11:16:24 by eseah            ###   ########.fr       */
+/*   Created: 2022/11/10 22:49:43 by eseah             #+#    #+#             */
+/*   Updated: 2022/11/11 06:34:25 by eseah            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_calloc(size_t count, size_t size)
 {
-	size_t	i;
+	char	*ptr;
+	int		i;
+	int		x;
 
-	if (dst == src || !len)
-		return (dst);
+	ptr = (void *)malloc(count * size);
 	i = 0;
-	if (dst < src)
+	x = count * size;
+	if (!ptr)
+		return (NULL);
+	while (x--)
 	{
-		while (i < len)
-		{
-			*((char *)dst + i) = *((char *)src + i);
-			i++;
-		}
+		ptr[i] = 0;
+		i++;
 	}
-	else
-	{
-		while (len > 0)
-		{
-			*((char *)dst + len - 1) = *((char *)src + len - 1);
-			len--;
-		}
-	}
-	return (dst);
+	return (ptr);
 }
